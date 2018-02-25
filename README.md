@@ -15,6 +15,7 @@ User stories:
 
 Hint: Here are mp3s you can use for each button: https://s3.amazonaws.com/freecodecamp/simonSound1.mp3, https://s3.amazonaws.com/freecodecamp/simonSound2.mp3, https://s3.amazonaws.com/freecodecamp/simonSound3.mp3, https://s3.amazonaws.com/freecodecamp/simonSound4.mp3.
 
+Fully responsive design, based on the viewport's size.  
 
 The game is live at https://user883311.github.io/simon-game/. 
 
