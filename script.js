@@ -5,21 +5,69 @@ var win = 20;
 var strict = false; // toggle
 var buttonsActive = false;
 var mistake = 0;
+var on = false;
+document.onreadystatechange = function () {
+    if (this.readyState == "complete") {
+        document.getElementById("on-off-checkbox").checked = false;
+    }
+}
 
 // SOUNDS
+// E-note (green, upper left, an octave lower than blue);
+// A-note (red, upper right).
 // E-note (blue, lower right);
 // C♯-note (yellow, lower left);
-// A-note (red, upper right).
-// E-note (green, upper left, an octave lower than blue);
+var green_note_e2 = new Audio("sounds/e2.wav"); // buffers automatically when created
+var red_note_a = new Audio("sounds/a.wav");
+var blue_note_e3 = new Audio("sounds/e3.wav");
+var yellow_note_c = new Audio("sounds/c.wav");
+var soundsArr = [green_note_e2, red_note_a, yellow_note_c, blue_note_e3];
 
-function start() {
-    console.log("Starting...");
-    console.log("stric mode?", strict);
+
+// FUNCTIONS
+async function start() {
+    if (on === false) { return 0 };
+    await sleep(1000);
     nextMachineSeq();
     buttonsActive = true;
 }
 
-function humanPlays(intBtnValue) {
+function setStrict() {
+    if (on === false) { return 0 };
+    if (strict) {
+        document.getElementById("strict-mode-led").classList.remove("led-on");
+        strict = false;
+    }
+    else {
+        document.getElementById("strict-mode-led").classList.add("led-on");
+        strict = true;
+    }
+}
+
+function onOff() {
+    on = on ? false : true;
+    count = 0;
+    if (on) {
+        document.getElementById("display-panel").classList.remove("invisible-text");
+        document.getElementById("display-panel").textContent = (count < 10) ? "0" + count.toString() : count.toString();
+        strict = false;
+        document.getElementById("strict-mode-led").classList.remove("led-on");
+        reset();
+    }
+    else {
+        document.getElementById("display-panel").classList.add("invisible-text");
+        strict = false;
+        document.getElementById("strict-mode-led").classList.remove("led-on");
+
+    }
+}
+
+async function humanPlays(intBtnValue) {
+    if (on === false) { return 0 };
+
+    soundsArr[intBtnValue].play();
+    await sleep(1000);
+
     console.log("Human plays", intBtnValue);
     if (buttonsActive) {
         humanSeq.push(intBtnValue);
@@ -28,17 +76,22 @@ function humanPlays(intBtnValue) {
             console.log("So far humanSeq === machineSeq...");
 
             if (arraysEqual(humanSeq, machineSeq)) {
-                if (count === win) {gameWon();}
+                if (count === win) { gameWon(); }
                 else {
-                    console.log("Good, let's go to round#"+count);
+                    console.log("Good, let's go to round#" + count);
                     count++;
+                    document.getElementById("display-panel").textContent = (count < 10) ? "0" + count.toString() : count.toString();
                     console.log("count =", count);
+                    await sleep(500);
                     nextMachineSeq();
                 }
             }
         }
         else {
             console.log("There was a mistake");
+            document.getElementById("display-panel").textContent = "!!";
+            await sleep(2000);
+            document.getElementById("display-panel").textContent = (count < 10) ? "0" + count.toString() : count.toString();
             if (strict === false && mistake < 1) {
                 mistake++;
                 playSequence();
@@ -59,19 +112,25 @@ function nextMachineSeq() {
     buttonsActive = true;
 }
 
-function playSequence() {
+async function playSequence() {
     for (i = 0; i < machineSeq.length; i++) {
         console.log(machineSeq[i]);
+        document.getElementById("button" + machineSeq[i]).classList.add("pressed");
+        soundsArr[machineSeq[i]].play();
+        await sleep(500);
+        document.getElementById("button" + machineSeq[i]).classList.remove("pressed");
+        await sleep(1000);
     }
 }
 
 function reset() {
+    if (on === false) { return 0 };
     buttonsActive = false;
     count = 0;
+    document.getElementById("display-panel").textContent = (count < 10) ? "0" + count.toString() : count.toString();
     machineSeq = [];
     humanSeq = [];
     mistake = 0;
-    start();
 }
 
 function gameWon() {
@@ -82,6 +141,7 @@ function gameWon() {
 function gameLost() {
     console.log("It's a LOSS !");
     reset();
+    start();
 }
 
 function arraysEqual(a, b) {
@@ -113,4 +173,10 @@ function arraysSameElements(a, b) {
         if (a[i] !== b[i]) return false;
     }
     return true;
+}
+
+function sleep(ms) {
+    /* To be used in async function with : 
+    await sleep(2000); */
+    return new Promise(resolve => setTimeout(resolve, ms));
 }

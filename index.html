@@ -12,43 +12,43 @@
 
 <body>
     <div id="simon">
-        <div class="color-button" id="button1"></div>
-        <div class="color-button" id="button2"></div>
-        <div class="color-button" id="button3"></div>
-        <div class="color-button" id="button4"></div>
+        <div class="color-button" id="button0" onclick="humanPlays(0)"></div>
+        <div class="color-button" id="button1" onclick="humanPlays(1)"></div>
+        <div class="color-button" id="button2" onclick="humanPlays(2)"></div>
+        <div class="color-button" id="button3" onclick="humanPlays(3)"></div>
     </div>
 
     <div id="central-panel-bg"></div>
-        <div id="central-panel">
-            <div class="title">
-                <span>Simon</span>
-            </div>
-
-            <div id="display-panel-container">
-                <div id="display-panel">00</div>
-                <div class="btn-label" id="display-panel-label">COUNT</div>
-            </div>
-
-            <div id="start-btn-container">
-                <button id="start-btn"></button>
-                <div class="btn-label">START</div>
-            </div>
-
-            <div id="strict-mode-container">
-                <div>
-                    <button id="strict-mode-button">
-                        <div class="led-off" id="strict-mode-led"></div>
-                    </button>
-                </div>
-                <div class="btn-label" id="strict-mode-label">STRICT</div>
-            </div>
-
-            <div id="on-off-container">
-                <!-- <div class="onoffswitch" id="on-off-toggle"></div> -->
-                <input type="checkbox" class="onoffswitch-checkbox checkbox" id="">
-                <div class="btn-label" id="on-off-label">On/Off</div>
-            </div>
+    <div id="central-panel">
+        <div class="title">
+            <span>Simon</span>
         </div>
+
+        <div id="display-panel-container">
+            <div class="invisible-text" id="display-panel">00</div>
+            <div class="btn-label" id="display-panel-label">COUNT</div>
+        </div>
+
+        <div id="start-btn-container">
+            <button id="start-btn" onclick="start()"></button>
+            <div class="btn-label">START</div>
+        </div>
+
+        <div id="strict-mode-container">
+            <div>
+                <button id="strict-mode-button" onclick="setStrict()">
+                    <div class="" id="strict-mode-led"></div>
+                </button>
+            </div>
+            <div class="btn-label" id="strict-mode-label">STRICT</div>
+        </div>
+
+        <div id="on-off-container">
+            <!-- <div class="onoffswitch" id="on-off-toggle"></div> -->
+            <input checked="false" type="checkbox" class="checkbox" id="on-off-checkbox" onclick="onOff()">
+            <div class="btn-label" id="on-off-label">ON / OFF</div>
+        </div>
+    </div>
 </body>
 
 </html>

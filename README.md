@@ -18,4 +18,3 @@ Hint: Here are mp3s you can use for each button: https://s3.amazonaws.com/freeco
 Fully responsive design, based on the viewport's size.  
 
 The game is live at https://user883311.github.io/simon-game/. 
-

@@ -33,24 +33,24 @@ button {
     z-index: 0;
     padding: 2.5vh;
 }
-
-.color-button{
+.color-button {
     z-index: 1;
     margin: 2.5vh;
 }
-#button1{
+.color-button:active, .pressed {opacity: 0.6;}
+#button0{
     background-color: green;
     border-top-left-radius: 100%;
 }
-#button2{
+#button1{
     background-color: red;
     border-top-right-radius: 100%;
 }
-#button3{
+#button2{
     background-color: yellow;
     border-bottom-left-radius: 100%;
 }
-#button4{
+#button3{
     background-color: blue;
     border-bottom-right-radius: 100%;
 }
@@ -86,16 +86,13 @@ button {
     font-size:4vh;
     color: darkred;
     background-color: black;
+    padding-top: 0.7vh;
+    border-radius: 0.5vh;
 }
-.btn-label {
-    margin-top: 60%;
-}
-.checkbox{
-    cursor: pointer;
-}
-#start-btn {
-    background-color: brown;
-}
+.invisible-text {color: transparent !important;}
+.btn-label {margin-top: 60%;}
+.checkbox{cursor: pointer;}
+#start-btn {background-color: brown;}
 #strict-mode-led {
     position: absolute;
     left: 50%;
@@ -106,16 +103,8 @@ button {
     height: 1vh;   
     border-radius : 100%;
     border : 2px solid #444;
-}
-.led-on {
-    background-color : red;
-}
-.led-off {
     background-color : black;
 }
-#central-panel>#on-off-container {
-    grid-column: 1/4;
-}
-#on-off-label {
-    margin-top: 0;
-}
+.led-on {background-color : red !important;}
+#central-panel>#on-off-container {grid-column: 1/4;}
+#on-off-label {margin-top: 0;}
