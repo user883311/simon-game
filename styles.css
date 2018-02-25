@@ -37,7 +37,7 @@ button {
     z-index: 1;
     margin: 2.5vh;
 }
-.color-button:active, .pressed {opacity: 0.6;}
+.color-button:active, .human-pressed, .machine-pressed {opacity: 0.6;}
 #button0{
     background-color: green;
     border-top-left-radius: 100%;
