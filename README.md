@@ -1,5 +1,4 @@
 # Simon Game
-## a freecodecamp project
 
 Simon is an electronic game of memory skill invented by Ralph H. Baer and Howard J. Morrison, with software programming by Lenny Cope. The device creates a series of tones and lights and requires a user to repeat the sequence. If the user succeeds, the series becomes progressively longer and more complex. Once the user fails, the game is over. 
 
@@ -13,8 +12,7 @@ User stories:
 - I can play in strict mode where if I get a button press wrong, it notifies me that I have done so, and the game restarts at a new random series of button presses.
 - I can win the game by getting a series of 20 steps correct. I am notified of my victory, then the game starts over.
 
-Hint: Here are mp3s you can use for each button: https://s3.amazonaws.com/freecodecamp/simonSound1.mp3, https://s3.amazonaws.com/freecodecamp/simonSound2.mp3, https://s3.amazonaws.com/freecodecamp/simonSound3.mp3, https://s3.amazonaws.com/freecodecamp/simonSound4.mp3.
 
 Fully responsive design, based on the viewport's size.  
 
-The game is live at https://user883311.github.io/simon-game/. 
+The game is live @ https://user883311.github.io/simon-game/. 
